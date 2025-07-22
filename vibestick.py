@@ -8,6 +8,7 @@ import subprocess
 import os
 import sys
 import signal
+import shutil
 from pathlib import Path
 
 
@@ -30,11 +31,40 @@ class VibestickApp(rumps.App):
             None,  # Separator
         ]
     
+    def ensure_config(self):
+        """Ensure config/mode.json exists, create from default if not."""
+        script_dir = Path(__file__).parent
+        mode_config = script_dir / "config" / "mode.json"
+        
+        if not mode_config.exists():
+            # Look for terminal-mode.json as default
+            default_mode = script_dir / "config" / "terminal-mode.json"
+            if default_mode.exists():
+                import shutil
+                shutil.copy(default_mode, mode_config)
+                rumps.notification(
+                    "Vibestick", 
+                    "Config Created", 
+                    "Created default mode.json from terminal-mode template"
+                )
+            else:
+                # Create a minimal config if no templates exist
+                mode_config.parent.mkdir(exist_ok=True)
+                mode_config.write_text('{"name": "default", "buttons": {}}')
+                rumps.notification(
+                    "Vibestick", 
+                    "Config Created", 
+                    "Created minimal mode.json configuration"
+                )
+    
     def start_main(self):
         """Start main.py as a subprocess."""
         try:
             # Change to the script directory
             script_dir = Path(__file__).parent
+            
+            # Ensure config/mode.json exists
+            self.ensure_config()
             
             # Start main.py
             self.main_process = subprocess.Popen(
