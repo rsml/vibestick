@@ -44,8 +44,11 @@ Temporary Items
 /tmp/
 
 # Config (user-specific)
-/config/
+/config/computers.json
+/config/mode.json
 /images/
 
-# But include example configs
+# But include example configs and mode templates
 !/config/example-*.json
+!/config/*-mode.json
+!/config/overview.json
