@@ -66,18 +66,30 @@ Once installed, Vibestick will:
 
 ## Configuration
 
-Vibestick uses the StreamDeck Dual Control configuration. Place your config files in:
+The app looks for configuration files in the `config/` directory within the app location.
 
+**Important: Before first run, create a `config/mode.json` file:**
+
+```bash
+cd /path/to/vibestick
+cp config/terminal-mode.json config/mode.json
 ```
-~/Library/Application Support/Vibestick/
-├── config/
-│   ├── overview.json
-│   ├── computers.json
-│   ├── terminal-mode.json
-│   ├── simulator-mode.json
-│   └── fork-mode.json
-└── images/
-    └── (your button images)
+
+Available mode templates:
+- `terminal-mode.json` - Terminal/development commands
+- `simulator-mode.json` - iOS Simulator controls  
+- `fork-mode.json` - Fork git client shortcuts
+- `overview.json` - Overview/navigation mode
+
+Configuration files:
+```
+config/
+├── mode.json          # Current mode (create from template)
+├── computers.json     # Computer connection settings
+├── terminal-mode.json # Terminal mode template
+├── simulator-mode.json # Simulator mode template
+├── fork-mode.json     # Fork mode template
+└── overview.json      # Overview mode template
 ```
 
 ### Computer Configuration
