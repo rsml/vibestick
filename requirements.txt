@@ -1,0 +1,14 @@
+# Vibestick Requirements
+
+# Menubar app framework
+rumps>=0.4.0
+
+# StreamDeck control
+streamdeck>=0.9.0
+pillow>=9.0.0
+
+# Remote control support
+paramiko>=2.9.0
+
+# Build tools (optional)
+py2app>=0.28.0
