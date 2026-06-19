@@ -2,7 +2,9 @@
 
 A macOS menubar app for StreamDeck Dual Control - control multiple computers with a single StreamDeck.
 
-![Vibestick Icon](assets/vibestick-icon.png)
+## Demo
+
+[https://x.com/coding_ross/status/1947483032849404096](https://x.com/coding_ross/status/1947483032849404096)
 
 ## Features
 
